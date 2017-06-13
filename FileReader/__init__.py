@@ -1,0 +1,3 @@
+'''
+Leser filer gitt filnavn
+'''
