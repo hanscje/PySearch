@@ -7,7 +7,8 @@ initpath = os.getcwd()
 startpath = initpath
 
 
-def filewalk()
+#def filewalk():
+
 
 def init(path = os.getcwd()):
     """
@@ -18,9 +19,26 @@ def init(path = os.getcwd()):
     TODO: sjekk at path ikke er en fil, men mappe
     """
 
-   startpath = path
-   os.chdir(startpath)
-   print(os.listdir(startpath))
+    startpath = path
+    os.chdir(startpath)
+
+
+def findAllFiles():
+    """
+    Find all files in subdirectory of "startpath"
+
+    :return:list of all files in subdir
+    """
+
+    files = os.walk(startpath)
+    filepaths = []
+    for tuple in files:
+        for filename in tuple[2]:
+            fullpathname = os.path.join(tuple[0],filename)
+            filepaths.append(fullpathname)
+
+    return filepaths
+
 
 
 
