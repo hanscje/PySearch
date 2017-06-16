@@ -19,5 +19,4 @@ def find_all_files(path):
         for filename in tuple[2]:
             fullpathname = os.path.join(tuple[0],filename)
             filepaths.append(fullpathname)
-
     return filepaths
