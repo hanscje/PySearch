@@ -1,6 +1,4 @@
 
-
-
 """
     datastruktur:
 
@@ -21,7 +19,7 @@ class PostingList(object):
         self.data = {}
 
     def add_posting(self, docID, position):
-        posting = self.data[docID]
+        posting = self.data.get(docID, None)
         if posting is None:
             self.data[docID] = (1,[position])
             print(self.data[docID])
@@ -37,9 +35,10 @@ class Dictionary(object):
         self.data = {}
 
     def add_word(self, word, docID, position):
-        poslist = self.data[word]
+        poslist = self.data.get(word, None)
         if poslist is None:
             self.data[word] = PostingList()
+
         self.data[word].add_posting(docID, position)
 
 
