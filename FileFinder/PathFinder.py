@@ -6,7 +6,7 @@ import os
 initpath = os.getcwd()
 startpath = initpath
 
-def find_all_files(path):
+def find_all_files(path) :
     """
     Find all files in subdirectory of "startpath"
 
@@ -19,4 +19,5 @@ def find_all_files(path):
         for filename in tuple[2]:
             fullpathname = os.path.join(tuple[0],filename)
             filepaths.append(fullpathname)
+
     return filepaths
