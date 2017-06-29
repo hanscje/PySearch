@@ -9,8 +9,10 @@
         self.data = dictionary { wordID : postinglist { docID : Posting (antall, posision[]) } }
 
 
-    TODO: lag noe som mapper mellom DocID og Path
 """
+
+
+# TODO: lag noe som mapper mellom DocID og Path
 
 
 class PostingList(object):
@@ -51,7 +53,7 @@ class Dictionary(object):
 
     def print_index(self):
         for key, posting_list in self.data.items():
-            print(key)
+            print("'"+key+"'")
             posting_list.print_postings()
 
 

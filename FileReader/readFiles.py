@@ -3,6 +3,7 @@
 
 
 from PySearch.FileFinder.PathFinder import find_all_files
+from PySearch.Tokenizer.tokenize import tokenize
 from PySearch.dictionary.dict import Dictionary
 
 invertedindex = Dictionary()
@@ -45,12 +46,16 @@ def index_file(filename):
 
     file = open(filename, "r", encoding='utf-8')
 
+    word_counter = 0
     for line in file:
-        for word in line.split():
-            invertedindex.add_word(word, 1, 1)
+        words_in_line = tokenize(line)
+        for word in words_in_line:
+            invertedindex.add_word(word, 1, word_counter)
+            word_counter += 1
 
-    invertedindex.print_index()
+
 
 
 if __name__ == "__main__" :
     index_files()
+    invertedindex.print_index()

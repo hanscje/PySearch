@@ -1,6 +1,12 @@
 """
 Given a start directory finds all file names in current dir, and recursively
+
+Should also give and make docID
+
 """
+
+#TODO: make a hashingfunction that hashes a file to make an unique id for that file.
+
 import os
 
 initpath = os.getcwd()
