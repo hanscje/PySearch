@@ -5,8 +5,6 @@ Tokenizes words.
 """
 
 
-
-
 def tokenize(line):
     #split_chars = ["\\", "'", ")"]
     ord = line.strip().split()

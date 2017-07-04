@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
-
-
 from PySearch.FileFinder.PathFinder import find_all_files
 from PySearch.Tokenizer.tokenize import tokenize
 from PySearch.dictionary.dict import Dictionary
 
 invertedindex = Dictionary()
+
 
 def index_files():
     """
@@ -17,7 +16,6 @@ def index_files():
     files = get_files()
     for file in files:
         index_file(file)
-
 
 
 def get_files(root_folder = "/Users/Hans/Documents/Kode/sommerprosjekt17"):
@@ -31,18 +29,17 @@ def get_files(root_folder = "/Users/Hans/Documents/Kode/sommerprosjekt17"):
     """
     files = find_all_files(root_folder)
 
-    #Filters files so we dont get hidden files
+    # Filters files so we don't get hidden files
     files = filter(lambda x : x.endswith(".txt") or x.endswith(".py"), files)
 
     return files
 
+
 def index_file(filename):
     """
-
     :param filename:
     :return:
     """
-
 
     file = open(filename, "r", encoding='utf-8')
 
@@ -52,8 +49,6 @@ def index_file(filename):
         for word in words_in_line:
             invertedindex.add_word(word, 1, word_counter)
             word_counter += 1
-
-
 
 
 if __name__ == "__main__" :
