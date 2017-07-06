@@ -32,6 +32,7 @@ class TestTokenize(TestCase):
 
     def test_advanced_seperation(self):
         self.assertEqual(tokenize('"""test(noe)"""'), ['"', '"', '"', 'test', '(', 'noe', ')', '"', '"', '"'])
+        # self.assertEqual(tokenize('funksjon[noe].[]'), ['funksjon', '[', 'noe', ']', '.', '[', ']'])
 
 
 if __name__ == "__main__":

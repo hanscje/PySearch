@@ -5,7 +5,7 @@ from PySearch.Tokenizer.tokenize import tokenize
 from PySearch.dictionary.dict import Dictionary
 
 invertedindex = Dictionary()
-
+id_mapping = []
 
 def index_files():
     """
@@ -13,9 +13,12 @@ def index_files():
 
     :return: void
     """
-    files = get_files()
-    for file in files:
-        index_file(file)
+    paths = get_files()
+    docID = 0
+    for file_path in paths:
+        id_mapping.insert(docID, file_path)
+        index_file(file_path, docID)
+        docID += 1
 
 
 def get_files(root_folder = "/Users/Hans/Documents/Kode/sommerprosjekt17"):
@@ -27,15 +30,18 @@ def get_files(root_folder = "/Users/Hans/Documents/Kode/sommerprosjekt17"):
 
     :param root_folder: the rootfolder for which all files and subdirs is returned
     """
-    files = find_all_files(root_folder)
+    paths = find_all_files(root_folder)
 
     # Filters files so we don't get hidden files
-    files = filter(lambda x : x.endswith(".txt") or x.endswith(".py"), files)
+    paths = filter(lambda x : x.endswith(".txt") or x.endswith(".py"), paths)
 
-    return files
+    return paths
+
+def docID_to_path(docID):
+    return id_mapping[docID]
 
 
-def index_file(filename):
+def index_file(filename, docID):
     """
     :param filename:
     :return:
@@ -43,11 +49,12 @@ def index_file(filename):
 
     file = open(filename, "r", encoding='utf-8')
 
+
     word_counter = 0
     for line in file:
         words_in_line = tokenize(line)
         for word in words_in_line:
-            invertedindex.add_word(word, 1, word_counter)
+            invertedindex.add_word(word, docID, word_counter)
             word_counter += 1
 
 

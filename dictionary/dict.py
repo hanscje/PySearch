@@ -34,7 +34,7 @@ class PostingList(object):
 
     def print_postings(self):
         for docID, posting in self.data.items():
-            print("\t", docID, ":\t", posting[0])
+            print("\tdocID:", docID, ":\t#postings", posting[0])
 
 
 
