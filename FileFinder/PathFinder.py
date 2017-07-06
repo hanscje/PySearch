@@ -3,6 +3,9 @@ Given a start directory finds all file names in current dir, and recursively
 
 Should also give and make docID
 
+
+__author__ = hjenvild@gmail.com, arildlil@protonmail.com
+
 """
 
 #TODO: make a hashingfunction that hashes a file to make an unique id for that file.

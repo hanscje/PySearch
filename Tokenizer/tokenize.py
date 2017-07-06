@@ -1,17 +1,17 @@
 """
 Tokenize words.
 
-@author hjenvild@gmail.com, arildlil@protonmail.com
+__author__ = hjenvild@gmail.com, arildlil@protonmail.com
 """
+import re
 
 
 def tokenize(line):
 
-    # split_chars = ["\\", "'", ")"]
-
-
     assert isinstance(line, str), "The input is not a string, was a %r"%type(line)
 
-    ord = line.strip().split()
+    line = line.strip()
+    ord = re.split("([^a-åA-Å0-9])", line)
+    ord = [o for o in ord if o != ' ' and o != '']
     return ord
 
