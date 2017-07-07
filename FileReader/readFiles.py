@@ -2,7 +2,7 @@
 
 from PySearch.FileFinder.PathFinder import find_all_files
 from PySearch.Tokenizer.tokenize import tokenize
-from PySearch.dictionary.dict import Dictionary
+from PySearch.Dictionary.dict import Dictionary
 
 invertedindex = Dictionary()
 id_mapping = []
@@ -21,7 +21,7 @@ def index_files():
         docID += 1
 
 
-def get_files(root_folder = "/Users/Hans/Documents/Kode/sommerprosjekt17"):
+def get_files(root_folder = "/Users/Hans/Documents/Kode/sommerprosjekt17/testfiler"):
     """
     Gets all the file names from a specified folder, in string format.
     Filters the files on a filter. To avoid hidden and unwanted files.
@@ -57,6 +57,11 @@ def index_file(filename, docID):
             invertedindex.add_word(word, docID, word_counter)
             word_counter += 1
 
+    file.close()
+
+def index():
+    index_files()
+    return invertedindex
 
 if __name__ == "__main__" :
     index_files()
