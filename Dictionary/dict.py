@@ -6,7 +6,7 @@
         data inneholder postingliste, postingliste er en klasse som inneholder en Dictionary av postings som kan være
         klasse eller tupler.
 
-        self.data = Dictionary { wordID : postinglist { docID : Posting (antall, posision[]) } }
+        self.data = Dictionary { word : postinglist { docID : Posting (antall, posision[]) } }
 
 
 """
@@ -39,7 +39,7 @@ class PostingList(object):
 
     def get_keys(self):
         key_list = list(self.data.keys())
-        return  key_list
+        return key_list
 
     def get_count(self, docID):
         return self.data.get(docID)[0]
@@ -73,8 +73,13 @@ class Dictionary(object):
             print("'"+key+"'")
             posting_list.print_postings()
 
-
-
-
-
-
+    def check_word(self, word):
+        """
+        checks words existence in the dictionary
+        :param word: Word to be given realitycheck
+        :return: True/False
+        """
+        if word in self.data:
+            return True
+        else:
+            return False
