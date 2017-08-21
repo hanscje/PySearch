@@ -21,6 +21,9 @@ class TestDictionary(TestCase):
         self.dict.add_word('test', 2,4)
         self.assertTrue(self.dict.check_word('test'))
 
+    def test_get_corpus_size(self):
+        self.assertEqual(self.dict.get_corpus_size(), 2)
+
     def tearDown(self):
         self.dict = None
 

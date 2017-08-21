@@ -44,8 +44,15 @@ class PostingList(object):
     def get_count(self, docID):
         return self.data.get(docID)[0]
 
-    def get_pos_lst(self, docID):
+    def get_position_list(self, docID):
         return self.data.get(docID)[1]
+
+    def get_size(self):
+        return len(self.data)
+
+    def get_postings(self):
+        return self.data
+
 
 
 
@@ -53,8 +60,10 @@ class Dictionary(object):
 
     def __init__(self):
         self.data = {}
+        self.corpus_size = 0
 
     def add_word(self, word, docID, position):
+        if docID > self.corpus_size: self.corpus_size = docID
         posting_list = self.data.get(word, None)
         if posting_list is None:
             self.data[word] = PostingList()
@@ -83,3 +92,6 @@ class Dictionary(object):
             return True
         else:
             return False
+
+    def get_corpus_size(self):
+        return self.corpus_size + 1
