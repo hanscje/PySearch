@@ -9,5 +9,6 @@ PySearch is not yet ready to be downloaded and installed smoothly. Feel free to 
 
 ## Authors
 Hans CT Jenvild - Master student at University of Oslo studying informatics
+
 Arild Lilleg?rd - Master student at University of Oslo studying informatics
 
