@@ -3,7 +3,6 @@ from unittest import TestCase
 
 from PySearch.Search.boolean_search import search
 
-
 class TestSearch(TestCase):
 
     def test_search_single_word(self):

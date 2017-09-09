@@ -54,8 +54,6 @@ class PostingList(object):
         return self.data
 
 
-
-
 class Dictionary(object):
 
     def __init__(self):

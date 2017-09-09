@@ -20,8 +20,7 @@ def rank_documents(query_terms):
         print("idf verdien", idf)
         postings = posting_list.get_postings()
         print(postings)
-        if postings is None:
-            print("Hei! postings er tom!")
+        # if postings is None:
 
         for docID, posting in postings.items():
 
@@ -33,17 +32,22 @@ def rank_documents(query_terms):
     return result_set
 
 
+# TODO: Filter out null results
 def ranked_search(query):
     query_terms = tokenize(query)
     print(query_terms)
     results = rank_documents(query_terms)
-    sorted_results = [(doc, results[doc]) for doc in sorted(results, key=results.get, reverse=True)]
 
+    sorted_results = [(doc, results[doc]) for doc in sorted(results, key=results.get, reverse=True)]
+    paths = []
     for d, rank in sorted_results:
         path = docID_to_path(d)
-        print("Hei!")
         print(path, rank)
+        paths.append(path)
+
+    return [path]
 
 if __name__ == '__main__':
     #print("Hei!")
     ranked_search("kaffe")
+    ranked_search("dette kaffe")
